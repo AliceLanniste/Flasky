@@ -4,7 +4,7 @@ import os
 basedir=os.path.abspath(os.path.dirname(__file__))
 
 class Config:
-	SECERT_KEY='hard to guess string'
+	SECRET_KEY='hard to guess string'
 	SQLALCHEMY_COMMIT_ON_TEARDOWN=True
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
 	#FLASKY_MAIL_SUBJECT_PREFIX='[flasky]'
