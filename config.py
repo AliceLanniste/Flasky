@@ -7,8 +7,9 @@ class Config:
 	SECRET_KEY='hard to guess string'
 	SQLALCHEMY_COMMIT_ON_TEARDOWN=True
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
-	#FLASKY_MAIL_SUBJECT_PREFIX='[flasky]'
-	#FLASKY_MAIL_SENDER=''
+	FLASKY_MAIL_SUBJECT_PREFIX='[flasky]'
+	FLASKY_MAIL_SENDER='Flasky <lannistepen@163.com>'
+	FLASKY_ADMIN=''
 
 	@staticmethod
 	def init_app(app):
@@ -41,7 +42,4 @@ config={
 }	
 
 
-		
-    	
 
-			
