@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% import "_macros.html" as macros %}
 {% block title %}Flasky - {{ user.username }}{% endblock %}
 
 {% block page_content %}
@@ -15,6 +15,11 @@
     {% endif %}
     <h3>Posts by {{ user.username }}</h3>
     {% include '_posts.html' %}
+    {% if pagination %}
+    <div class="pagination">
+    {{ macros.pagination_widget(pagination,'.index') }}
+    </div>
+    {% endif %}
     {% if current_user.is_administrator() %}
     <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
     {% endif %}
