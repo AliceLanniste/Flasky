@@ -17,7 +17,7 @@ class UserModelTestCase(unittest.TestCase):
 
 class UserModelTestCase(unittest.TestCase):
     def test_roles_and_permissions(self):
-        u = User(email='john2@example.com', password='cat')
+        u = User(email='alice@exapmle.com', password='alice')
         self.assertTrue(u.can(Permission.WRITE_ARTICLES))
         self.assertFalse(u.can(Permission.MODERATE_COMMENTS))
 

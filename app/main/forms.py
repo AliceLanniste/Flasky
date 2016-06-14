@@ -8,9 +8,8 @@ class NameForm(Form):
     submit = SubmitField('Submit')
 
 class PostForm(Form):
-    body = TextAreaField('What is on your mind?',validators=[Required()])
+    body = TextAreaField("What's on your mind?",validators=[Required()])
     submit = SubmitField('Submit')
-
 
 # editprofileform
 class EditProfileForm(Form):

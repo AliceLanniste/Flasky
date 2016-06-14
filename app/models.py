@@ -69,8 +69,8 @@ class User(UserMixin, db.Model):
     about_me = db.Column(db.Text())
     member_since = db.Column(db.DateTime(), default=datetime.utcnow)
 
-    def __init__(self, **kw):
-        super(User, self).__init__(**kw)
+    def __init__(self, **kwargs):
+        super(User, self).__init__(**kwargs)
 
         if self.role is None:
             if self.email == current_app.config['FLASKY_ADMIN']:
@@ -92,7 +92,8 @@ class User(UserMixin, db.Model):
 
 
     def can(self,permissions):
-        return self.role is not None and (self.role.permissions & permissions) == permissions
+        return self.role is not None and  \
+               (self.role.permissions & permissions) == permissions
 
     def is_administrator(self):
         return self.can(Permission.ADMINISTER)
