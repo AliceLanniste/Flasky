@@ -59,3 +59,9 @@ def edit_profile():
 	return  render_template('edit_profile.html',form = form)
 
 
+#post route
+@main.route('/post/<int:id>')
+def post(id):
+	post=Post.query.get_or_404(id)
+	return render_template('post.html',posts=[post])
+
