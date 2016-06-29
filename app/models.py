@@ -94,6 +94,7 @@ class User(UserMixin, db.Model):
 
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
+        self.follow(self)
 
         if self.role is None:
             if self.email == current_app.config['FLASKY_ADMIN']:
@@ -124,10 +125,17 @@ class User(UserMixin, db.Model):
     def is_administrator(self):
         return self.can(Permission.ADMINISTER)
 
+    @staticmethod
+    def add_self_follow(self):
+        for user in User.query.all():
+            if not user.is_following(user):
+                user.follow(user)
+                db.session.add(user)
+                db.session.commit()
 
 
     def __repr__(self):
-        return '<user %s>' % self.Username
+        return '<user %r>' % self.username
 
 
 class AnonymousUser(AnonymousUserMixin):
