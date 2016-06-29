@@ -37,6 +37,16 @@ def index():
 # 		return render_template(url_for('.index'))
 # 	return render_template('index.html',form=form,name=session.get('known',False),current_time=datetime.utcnow())
 
+@main.route('/all')
+def show_all():
+    resp=make_response(redirect(url_for('.index')))
+    resp.set_cookies('show_all','',max*age=30*24*60*60)
+    return resp
+@main.route('/followed')
+def show_followed():
+    resp=make_response(redirect(url_for('.index')))
+    resp.set_cookies('show_followed','1',max*age=30*24*60*60)
+    return resp
 @main.route('/user/<username>')
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
@@ -125,8 +135,8 @@ def followed_by(username):
     follows=[{'user':item.follower,'timestamp':item.timestamp}
              for item in pagination.items]
     return render_template('followers.html',user=user,title='Followed by',
-						   endpoint='.followed_by',pagination=pagination,
-						   follows=follows)
+                           endpoint='.followed_by',pagination=pagination,
+                           follows=follows)
 
 
 
