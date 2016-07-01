@@ -17,3 +17,8 @@ class EditProfileForm(Form):
     location=StringField('Location',validators=[Length(0,64)])
     about_me=TextAreaField('About me')
     submit=SubmitField('Submit')
+
+class CommentForm(Form):
+    body=StringField('',validators=[Required()])
+    submit=SubmitField('Submit')
+
